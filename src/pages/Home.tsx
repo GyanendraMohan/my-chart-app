@@ -85,7 +85,7 @@ const Home = () => {
                             </Grid>
 
                         </Grid>
-                        <Box height={30} />
+                        <Box height={15} />
                         <Stack>
                             <Grid container spacing={2}>
                                 <Grid item xs={8}>

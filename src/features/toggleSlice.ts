@@ -5,7 +5,7 @@ interface ToggleState {
 }
 
 const initialState: ToggleState = {
-  isOpen: true,
+  isOpen: false,
 };
 
 const toggleSlice = createSlice({
