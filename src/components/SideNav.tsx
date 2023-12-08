@@ -17,6 +17,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -114,6 +115,27 @@ export default function SideNav() {
                                 <HomeIcon />
                             </ListItemIcon>
                             <ListItemText primary="Home" sx={{ opacity: toggleState.isOpen ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem disablePadding sx={{ display: "block" }} onClick={() => navigate("/products")}>
+                        <ListItemButton
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: toggleState.isOpen ? "initial" : "center",
+                                px: 2.5,
+                            }}
+                        >
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: toggleState.isOpen ? 3 : "auto",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <ShoppingBagIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Products" sx={{ opacity: toggleState.isOpen ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
 
