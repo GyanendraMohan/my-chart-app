@@ -13,14 +13,16 @@ import axios from 'axios';
 import { Product } from '../../interfaces/products';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductList() {
     const [products, setProducts] = useState<Product[]>([]);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [rows, setRows] = useState([])
+
+    const navigate = useNavigate();
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
@@ -78,6 +80,10 @@ export default function ProductList() {
         }
     };
 
+    const handleNavigate = (productId: number) => {
+        navigate(`/products/${productId}`);
+    }
+
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -109,7 +115,7 @@ export default function ProductList() {
                         {products
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((product) => (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={product.id}>
+                                <TableRow hover sx={{ cursor: 'pointer' }} role="checkbox" tabIndex={-1} key={product.id} >
                                     <TableCell align='left'>{product.id}</TableCell>
                                     <TableCell align="left">{product.title.slice(0, 30)}</TableCell>
                                     <TableCell align="left">${product.price}</TableCell>
@@ -118,6 +124,7 @@ export default function ProductList() {
                                     <TableCell align="left">{product.rating.count}</TableCell>
                                     <TableCell align="left">
                                         <Stack spacing={2} direction="row">
+                                            <VisibilityIcon sx={{ color: "green" }} onClick={() => handleNavigate(product.id)} />
                                             <EditIcon sx={{ color: "blue" }} />
                                             <DeleteIcon sx={{ color: "red" }} onClick={() => deleteProduct(product.id)} />
                                         </Stack>

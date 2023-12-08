@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Settings from "./pages/Settings";
 import Analytics from "./pages/Analytics";
 import Products from "./pages/Products";
+import SingleProduct from "./pages/product/SingleProduct";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
         </Routes>
       </BrowserRouter>
     </>
